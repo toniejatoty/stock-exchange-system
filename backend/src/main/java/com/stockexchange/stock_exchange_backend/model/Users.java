@@ -26,7 +26,7 @@ public class Users {
     // konstruktory
     public Users() {}
     
-    // Poprawiony konstruktor - dodano email
+    // Poprawiony konstruktor 
     public Users(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
