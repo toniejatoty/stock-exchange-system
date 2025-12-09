@@ -17,25 +17,11 @@ public class CompaniesController {
     
     // Pobierz wszystkie spółki
     @GetMapping
-    public List<String> getAllCompanies() {
-        return companiesRepository.FindAll();
+    public List<Companies> getAllCompanies() {
+        return companiesRepository.findAllCompanies();
     }
     
-    // // Pobierz spółkę po ID
-    // @GetMapping("/{id}")
-    // public Companies getCompanyById(@PathVariable Long id) {
-    //     return companiesRepository.findById(id).orElse(null);
-    // }
-    
-    // // Pobierz spółkę po symbolu
-    // @GetMapping("/symbol/{symbol}")
-    // public Companies getCompanyBySymbol(@PathVariable String symbol) {
-    //     return companiesRepository.findBySymbol(symbol);
-    // }
-    
-    // // Dodaj nową spółkę
-    // @PostMapping
-    // public Companies addCompany(@RequestBody Companies company) {
-    //     return companiesRepository.save(company);
-    // }
+
+
+
 }

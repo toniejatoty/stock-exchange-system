@@ -13,5 +13,7 @@ public interface CompaniesRepository extends JpaRepository<Companies, Long> {
 
     @Query("SELECT Concat(c.name,'-->',c.symbol) FROM Companies c")
     List <String> FindAll();
-
+    
+    @Query("Select c from Companies c")
+    List<Companies> findAllCompanies();
 }

@@ -12,4 +12,6 @@ public interface UserRepository extends JpaRepository<Users, Long> {
     // Users means that we will work on this type of table, Long is type of primary key
     @Query("SELECT CONCAT(u.firstName, ' ', u.lastName) FROM Users u")
     List<String> findAllFullNames();
+    @Query("SELECT u FROM Users u")
+    List<Users> findAllUsers();
 }

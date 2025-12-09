@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import com.stockexchange.stock_exchange_backend.model.Users;
+
 import java.util.List;
 
 @RestController
@@ -21,9 +23,10 @@ public class UserController {
         return userRepository.findAllFullNames();
     }
     
-    // Dodatkowe endpointy:
     @GetMapping
-    public String usersInfo() {
-        return "User management endpoint - użyj /api/users/fullnames";
+    public List <Users> getAllUsers(){
+        return userRepository.findAllUsers();
     }
+
+
 }

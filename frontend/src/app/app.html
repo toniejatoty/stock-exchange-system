@@ -13,8 +13,8 @@
   <div class="section">
     <h2>Lista spółek</h2>
     <ul>
-      @for (company of companies; track company) {
-        <li>{{ company }}</li>
+      @for (company of companies; track company.id) {
+        <li>{{ company.name }} {{company.symbol}}</li>
       }
     </ul>
   </div>
@@ -22,8 +22,8 @@
   <div class="section">
     <h2>Lista użytkowników</h2>
     <ul>
-      @for (user of users; track user) {
-        <li>{{ user }}</li>
+      @for (user of users; track user.id) {
+        <li>{{ user.firstName }} {{user.lastName}}</li>
       }
     </ul>
   </div>
@@ -55,6 +55,34 @@
     </table>
     </div>
 </div>
+
+
+<div class="section">
+  <h2>Dodaj nową pozycję do portfolio</h2>
+  <form (ngSubmit)="addPortfolio()">
+    <!-- Select użytkownika -->
+    <select [(ngModel)]="newPortfolio.userId" name="userId">
+      <option value="">Wybierz użytkownika</option>
+      @for (user of users; track user) {
+        <option [value]="user.id">{{ user.firstName }} {{user.lastName}}</option>
+      }
+    </select>
+    
+    <!-- Select spółki -->
+    <select [(ngModel)]="newPortfolio.companyId" name="companyId">
+      <option value="">Wybierz spółkę</option>
+      @for (company of companies; track company) {
+        <option [value]="company.id">{{ company.name }} {{company.symbol}}</option>
+      }
+    </select>
+    
+    <!-- Input liczby akcji -->
+    <input type="number" [(ngModel)]="newPortfolio.quantity" name="quantity" placeholder="Liczba akcji" min="1">
+    
+    <button type="submit">Dodaj</button>
+  </form>
+</div>
+
 
 <router-outlet />
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
