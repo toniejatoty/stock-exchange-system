@@ -23,10 +23,10 @@ public interface CompaniesRepository extends JpaRepository<Companies, Long> {
     @Query("Select c from Companies c")
     List<Companies> findAllCompanies();
     
-    @Query("""
+    @Query(value = """
    SELECT c.id as id, c.name as name, c.symbol as symbol, cat.name as categoryName, cat.description
    FROM Companies c
    JOIN Categories cat ON c.category_id = cat.id
-""")
+""", nativeQuery=true)
 List<CompanyWithCategory> findAllWithCategory();
 }

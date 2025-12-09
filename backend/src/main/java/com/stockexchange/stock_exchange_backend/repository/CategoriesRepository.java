@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface UserRepository extends JpaRepository<Categories, Long> {
+public interface CategoriesRepository extends JpaRepository<Categories, Long> {
     // Users means that we will work on this type of table, Long is type of primary key
     
 }

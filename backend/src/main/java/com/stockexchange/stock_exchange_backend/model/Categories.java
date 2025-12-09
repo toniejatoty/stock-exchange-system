@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "CATEGORIES")
-public class Companies {
+public class Categories {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -13,11 +13,11 @@ public class Companies {
     private String name;
    
     @Column(name = "description", nullable = false, length = 255)
-    private String name;
+    private String description;
    
-    public Companies() {}
+    public Categories() {}
     
-    public Companies(String name, String description, Long categoryId) {
+    public Categories(String name, String description, Long categoryId) {
         this.name = name;
         this.description = description;
     }
