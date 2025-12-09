@@ -27,6 +27,33 @@
       }
     </ul>
   </div>
+
+  <div class = 'section'>
+    <h2>Portfolios</h2>
+    <table class = "portfolio-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>User ID</th>
+          <th>Company ID</th>
+          <th>Number of stocks</th>
+          <th>Last updated</th>
+        </tr>
+
+      </thead>
+  <tbody>
+    @for (portfolio of portfolios; track portfolio.id){
+      <tr>
+        <td> {{portfolio.id}}</td>
+        <td> {{portfolio.userId}}</td>
+        <td>{{portfolio.companyId}}</td>
+        <td>{{portfolio.quantity}}</td>
+        <td>{{portfolio.lastUpdated | date:'short'}}</td>
+      </tr>
+    }
+  </tbody>
+    </table>
+    </div>
 </div>
 
 <router-outlet />

@@ -36,3 +36,29 @@ li {
 li:hover {
   background: #e9ecef;
 }
+.portfolio-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.portfolio-table th,
+.portfolio-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.portfolio-table th {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+}
+
+.portfolio-table tr:hover {
+  background-color: #f8f9fa;
+}
+
+.portfolio-table tbody tr:last-child td {
+  border-bottom: none;
+}
