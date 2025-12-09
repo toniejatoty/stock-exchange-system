@@ -21,7 +21,10 @@ public class CompaniesController {
         return companiesRepository.findAllCompanies();
     }
     
-
+    @GetMapping("/with-category")
+    public List<CompanyWithCategory> getAllCompaniesWithCategory() {
+    return companiesRepository.findAllWithCategory();
+}
 
 
 }

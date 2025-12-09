@@ -29,7 +29,7 @@ public class PortfoliosController {
     // DODAJ nową pozycję do portfolio
     @PostMapping
     public Portfolios addPortfolio(@RequestBody Portfolios portfolio) {
-    portfolio.setId(null); // upewnij się, że to INSERT, nie UPDATE
+   // portfolio.setId(null); // upewnij się, że to INSERT, nie UPDATE
     portfolio.setLastUpdated(java.time.LocalDateTime.now());
     return portfoliosRepository.save(portfolio);
 }

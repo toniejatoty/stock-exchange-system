@@ -10,10 +10,23 @@ import java.util.List;
 public interface CompaniesRepository extends JpaRepository<Companies, Long> {
     // @Query("SELECT c FROM Companies c WHERE c.symbol = :symbol")
     // Companies findCompanyBySymbol(@Param("symbol") String symbol);
-
+    public interface CompanyWithCategory {
+    Long getId();
+    String getName();
+    String getSymbol();
+    String getCategoryName();
+    String getDescription();
+}
     @Query("SELECT Concat(c.name,'-->',c.symbol) FROM Companies c")
     List <String> FindAll();
     
     @Query("Select c from Companies c")
     List<Companies> findAllCompanies();
+    
+    @Query("""
+   SELECT c.id as id, c.name as name, c.symbol as symbol, cat.name as categoryName, cat.description
+   FROM Companies c
+   JOIN Categories cat ON c.category_id = cat.id
+""")
+List<CompanyWithCategory> findAllWithCategory();
 }
