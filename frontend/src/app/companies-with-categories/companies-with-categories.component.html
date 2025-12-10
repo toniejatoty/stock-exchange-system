@@ -1,0 +1,26 @@
+<div class="container">
+  <h1>Spółki z kategoriami</h1>
+  
+  <table class="portfolio-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nazwa</th>
+        <th>Ticker</th>
+        <th>Kategoria</th>
+        <th>Opis kategorii</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (c of companiesWithCategory; track c.id) {
+        <tr>
+          <td>{{ c.id }}</td>
+          <td>{{ c.name }}</td>
+          <td>{{ c.symbol }}</td>
+          <td>{{ c.categoryName }}</td>
+          <td>{{ c.description }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

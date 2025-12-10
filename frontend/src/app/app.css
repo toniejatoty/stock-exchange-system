@@ -233,3 +233,35 @@ body.dark-mode form button {
 body.dark-mode form button:hover {
   background-color: #1d4ed8;
 }
+.navbar {
+  display: flex;
+  gap: 20px;
+  padding: 16px 20px;
+  background: #1f2937;
+  border-bottom: 2px solid #2563eb;
+}
+
+.nav-link {
+  color: #e5e7eb;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.nav-link:hover {
+  background: #374151;
+}
+
+body.light-mode .navbar {
+  background: #f3f4f6;
+  border-bottom-color: #93c5fd;
+}
+
+body.light-mode .nav-link {
+  color: #1f2937;
+}
+
+body.light-mode .nav-link:hover {
+  background: #e5e7eb;
+}
