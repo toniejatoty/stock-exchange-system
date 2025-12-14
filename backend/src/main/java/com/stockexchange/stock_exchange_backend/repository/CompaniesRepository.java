@@ -29,4 +29,12 @@ public interface CompaniesRepository extends JpaRepository<Companies, Long> {
    JOIN Categories cat ON c.category_id = cat.id
 """, nativeQuery=true)
 List<CompanyWithCategory> findAllWithCategory();
+
+
+
+@Query(value = "SELECT COUNT(*) FROM companies WHERE symbol = :symbol OR name = :name", nativeQuery = true)
+Integer countBySymbolOrName(@Param("symbol") String symbol, @Param("name") String name);
+
+@Query(value = "SELECT COUNT(*) FROM portfolios WHERE company_id = :companyId", nativeQuery = true)
+Integer countPortfoliosByCompanyId(@Param("companyId") Long companyId);
 }

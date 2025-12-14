@@ -1,6 +1,50 @@
 <div class="container">
   <h1>Spółki z kategoriami</h1>
   
+  <div class="add-form">
+    <h3>Dodaj nową spółkę</h3>
+    <form (ngSubmit)="addCompany()">
+      <div class="form-group">
+        <label for="name">Nazwa spółki:</label>
+        <input 
+          id="name" 
+          type="text" 
+          [(ngModel)]="newCompany.name" 
+          name="name" 
+          required
+        >
+      </div>
+      
+      <div class="form-group">
+        <label for="symbol">Ticker:</label>
+        <input 
+          id="symbol" 
+          type="text" 
+          [(ngModel)]="newCompany.symbol" 
+          name="symbol" 
+          required
+        >
+      </div>
+      
+      <div class="form-group">
+        <label for="category">Kategoria:</label>
+        <select 
+          id="category" 
+          [(ngModel)]="newCompany.categoryId" 
+          name="category" 
+          required
+        >
+          <option value="0">-- Wybierz kategorię --</option>
+          @for (cat of categories; track cat.id) {
+            <option [value]="cat.id">{{ cat.name }}</option>
+          }
+        </select>
+      </div>
+      
+      <button type="submit" class="btn-add">Dodaj spółkę</button>
+    </form>
+  </div>
+  
   <table class="portfolio-table">
     <thead>
       <tr>
@@ -9,6 +53,7 @@
         <th>Ticker</th>
         <th>Kategoria</th>
         <th>Opis kategorii</th>
+        <th>Akcje</th>
       </tr>
     </thead>
     <tbody>
@@ -19,6 +64,11 @@
           <td>{{ c.symbol }}</td>
           <td>{{ c.categoryName }}</td>
           <td>{{ c.description }}</td>
+          <td>
+            <button class="btn-delete" (click)="deleteCompany(c.id)">
+              Usuń
+            </button>
+          </td>
         </tr>
       }
     </tbody>

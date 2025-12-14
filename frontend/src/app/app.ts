@@ -52,15 +52,7 @@ export class App implements OnInit {
   };
 
   ngOnInit() {
-    this.http.get<Company[]>('http://localhost:8080/api/companies')
-      .subscribe({
-        next: (data) => {
-          console.log('Companies loaded:', data);
-          this.companies = data;
-          this.cdr.markForCheck();
-        },
-        error: (error) => console.error('Error fetching companies:', error)
-      });
+    
     
     // Pobierz użytkowników
     this.http.get<User[]>('http://localhost:8080/api/users')
