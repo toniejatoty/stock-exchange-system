@@ -17,6 +17,11 @@ export class OrdersComponent implements OnInit {
   companies: any[] = [];
   
   selectedFilter: string = 'ALL';
+  selectedUserId: number = 0;
+  selectedCompanyId: number = 0;
+  selectedOrderType: string = 'ALL';
+  startDate: string = '';
+  endDate: string = '';
   
   newOrder = {
     userId: 0,
@@ -80,17 +85,61 @@ export class OrdersComponent implements OnInit {
   }
 
   applyFilter(): void {
-    if (this.selectedFilter === 'ALL') {
-      this.filteredOrders = [...this.orders];
-    } else {
-      this.filteredOrders = this.orders.filter(
-        order => order.status === this.selectedFilter
-      );
-    }
+    this.filteredOrders = this.orders.filter(order => {
+      // Filter by status
+      if (this.selectedFilter !== 'ALL' && order.status !== this.selectedFilter) {
+        return false;
+      }
+      
+      // Filter by user
+      if (this.selectedUserId != 0 && order.userId != this.selectedUserId) {
+        return false;
+      }
+      
+      // Filter by company
+      if (this.selectedCompanyId != 0 && order.companyId != this.selectedCompanyId) {
+        return false;
+      }
+      
+      // Filter by order type
+      if (this.selectedOrderType !== 'ALL' && order.orderType !== this.selectedOrderType) {
+        return false;
+      }
+      
+      // Filter by date range
+      if (this.startDate) {
+        const orderDate = new Date(order.orderDate);
+        const startDateTime = new Date(this.startDate);
+        if (orderDate < startDateTime) {
+          return false;
+        }
+      }
+      
+      if (this.endDate) {
+        const orderDate = new Date(order.orderDate);
+        const endDateTime = new Date(this.endDate);
+        endDateTime.setHours(23, 59, 59, 999); // End of day
+        if (orderDate > endDateTime) {
+          return false;
+        }
+      }
+      
+      return true;
+    });
     this.cdr.detectChanges();
   }
 
   onFilterChange(): void {
+    this.applyFilter();
+  }
+
+  clearFilters(): void {
+    this.selectedFilter = 'ALL';
+    this.selectedUserId = 0;
+    this.selectedCompanyId = 0;
+    this.selectedOrderType = 'ALL';
+    this.startDate = '';
+    this.endDate = '';
     this.applyFilter();
   }
 

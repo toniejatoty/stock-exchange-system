@@ -20,13 +20,84 @@
   padding: 1.5rem;
   border-radius: 8px;
   margin-bottom: 2rem;
-  display: flex;
-  align-items: center;
-  gap: 10px;
 }
 
 ::ng-deep body.dark-mode .filter-section {
   background-color: #2d2d2d;
+}
+
+.filter-section h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+::ng-deep body.dark-mode .filter-section h3 {
+  color: white;
+}
+
+.filter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-group label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+::ng-deep body.dark-mode .filter-group label {
+  color: white;
+}
+
+.filter-group select,
+.filter-group input[type="date"] {
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  width: 100%;
+}
+
+::ng-deep body.dark-mode .filter-group select,
+::ng-deep body.dark-mode .filter-group input[type="date"] {
+  background-color: #1a1a1a;
+  color: white;
+  border-color: #444;
+}
+
+.filter-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #ddd;
+}
+
+::ng-deep body.dark-mode .filter-actions {
+  border-top-color: #444;
+}
+
+.clear-btn {
+  padding: 8px 16px;
+  background-color: #6b7280;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.clear-btn:hover {
+  background-color: #4b5563;
 }
 
 .filter-section label {

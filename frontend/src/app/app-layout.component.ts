@@ -11,10 +11,10 @@ import { inject } from '@angular/core';
     <nav class="navbar">
       <a routerLink="/" class="nav-link">Home</a>
       <a routerLink="/portfolios" class="nav-link">Portfolios</a>
-      <a routerLink="/orders" class="nav-link">Zamówienia</a>
-      <a routerLink="/companies-categories" class="nav-link">Spółki z kategoriami</a>
-      <a routerLink="/users" class="nav-link">Użytkownicy</a>
-      <a routerLink="/categories" class="nav-link">Kategorie</a>
+      <a routerLink="/orders" class="nav-link">Orders</a>
+      <a routerLink="/companies-categories" class="nav-link">Companies & Categories</a>
+      <a routerLink="/users" class="nav-link">Users</a>
+      <a routerLink="/categories" class="nav-link">Categories</a>
     </nav>
     <div class="theme-toggle">
       <button (click)="toggleDarkMode()" class="toggle-btn">
