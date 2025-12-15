@@ -1,80 +1,14 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- Generalnie co użytkownik widzi--> 
-
 <div class="container">
   <h1>Stock Exchange System</h1>
-  
-
-
-  <div class = 'section'>
-    <h2>Portfolios</h2>
-    <table class = "portfolio-table">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>User ID</th>
-          <th>Company ID</th>
-          <th>Number of stocks</th>
-          <th>Last updated</th>
-        </tr>
-
-      </thead>
-  <tbody>
-    @for (portfolio of portfolios; track portfolio.id){
-      <tr>
-        <td> {{portfolio.id}}</td>
-        <td> {{portfolio.userId}}</td>
-        <td>{{portfolio.companyId}}</td>
-        <td>{{portfolio.quantity}}</td>
-        <td>{{portfolio.lastUpdated | date:'short'}}</td>
-      </tr>
-    }
-  </tbody>
-    </table>
-    </div>
+  <div class="welcome-section">
+    <h2>Witaj w systemie giełdowym!</h2>
+    <p>Wybierz jedną z opcji z menu powyżej:</p>
+    <ul>
+      <li><strong>Portfolios</strong> - zarządzaj portfoliami użytkowników</li>
+      <li><strong>Spółki z kategoriami</strong> - przeglądaj i zarządzaj spółkami</li>
+      <li><strong>Użytkownicy</strong> - zarządzaj użytkownikami systemu</li>
+    </ul>
+  </div>
 </div>
-
-
-<div class="section">
-  <h2>Dodaj nową pozycję do portfolio</h2>
-  <form (ngSubmit)="addPortfolio()">
-    <!-- Select użytkownika -->
-    <select [(ngModel)]="newPortfolio.userId" name="userId">
-      <option value="">Wybierz użytkownika</option>
-      @for (user of users; track user) {
-        <option [value]="user.id">{{ user.firstName }} {{user.lastName}}</option>
-      }
-    </select>
-    
-    <!-- Select spółki -->
-    <select [(ngModel)]="newPortfolio.companyId" name="companyId">
-      <option value="">Wybierz spółkę</option>
-      @for (company of companies; track company) {
-        <option [value]="company.id">{{ company.name }} {{company.symbol}}</option>
-      }
-    </select>
-    
-    <!-- Input liczby akcji -->
-    <input type="number" [(ngModel)]="newPortfolio.quantity" name="quantity" placeholder="Liczba akcji" min="1">
-    
-    <button type="submit">Dodaj</button>
-  </form>
-</div>
-
-
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 

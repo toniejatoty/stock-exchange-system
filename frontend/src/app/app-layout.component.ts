@@ -10,6 +10,7 @@ import { inject } from '@angular/core';
   template: `
     <nav class="navbar">
       <a routerLink="/" class="nav-link">Home</a>
+      <a routerLink="/portfolios" class="nav-link">Portfolios</a>
       <a routerLink="/companies-categories" class="nav-link">Spółki z kategoriami</a>
       <a routerLink="/users" class="nav-link">Użytkownicy</a>
     </nav>

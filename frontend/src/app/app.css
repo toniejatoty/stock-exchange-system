@@ -7,6 +7,30 @@
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
 }
 
+.welcome-section {
+  margin-top: 2rem;
+}
+
+.welcome-section h2 {
+  margin-bottom: 1rem;
+}
+
+.welcome-section p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.welcome-section ul {
+  list-style: disc;
+  padding-left: 2rem;
+}
+
+.welcome-section li {
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  border-left: none;
+}
+
 h1 {
   border-bottom: 2px solid #2563eb;
   padding-bottom: 10px;
