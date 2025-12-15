@@ -1,0 +1,120 @@
+<div class="container">
+  <h2>Zamówienia</h2>
+
+  <!-- Filtry -->
+  <div class="filter-section">
+    <label for="statusFilter">Filtruj według statusu:</label>
+    <select id="statusFilter" [(ngModel)]="selectedFilter" (change)="onFilterChange()">
+      <option value="ALL">Wszystkie</option>
+      <option value="PENDING">Oczekujące (PENDING)</option>
+      <option value="EXECUTED">Wykonane (EXECUTED)</option>
+      <option value="CANCELLED">Anulowane (CANCELLED)</option>
+    </select>
+    <span class="filter-info">Znaleziono: {{ filteredOrders.length }} zamówień</span>
+  </div>
+
+  <!-- Formularz dodawania -->
+  <div class="form-section">
+    <h3>Dodaj nowe zamówienie</h3>
+    <form (ngSubmit)="addOrder()">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="userId">Użytkownik:</label>
+          <select id="userId" [(ngModel)]="newOrder.userId" name="userId" required>
+            <option value="0">-- Wybierz użytkownika --</option>
+            <option *ngFor="let user of users" [value]="user.id">
+              {{ user.firstName }} {{ user.lastName }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="companyId">Firma:</label>
+          <select id="companyId" [(ngModel)]="newOrder.companyId" name="companyId" required>
+            <option value="0">-- Wybierz firmę --</option>
+            <option *ngFor="let company of companies" [value]="company.id">
+              {{ company.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="orderType">Typ zlecenia:</label>
+          <select id="orderType" [(ngModel)]="newOrder.orderType" name="orderType" required>
+            <option value="BUY">Kup (BUY)</option>
+            <option value="SELL">Sprzedaj (SELL)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="quantity">Ilość:</label>
+          <input type="number" id="quantity" [(ngModel)]="newOrder.quantity" 
+                 name="quantity" min="1" required>
+        </div>
+
+        <div class="form-group">
+          <label for="price">Cena:</label>
+          <input type="number" id="price" [(ngModel)]="newOrder.price" 
+                 name="price" min="0.01" step="0.01" required>
+        </div>
+      </div>
+
+      <button type="submit">Dodaj zamówienie</button>
+    </form>
+  </div>
+
+  <!-- Lista zamówień -->
+  <div class="orders-list">
+    <h3>Lista zamówień ({{ selectedFilter === 'ALL' ? 'Wszystkie' : selectedFilter }})</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Użytkownik</th>
+          <th>Firma</th>
+          <th>Typ</th>
+          <th>Ilość</th>
+          <th>Cena</th>
+          <th>Data</th>
+          <th>Status</th>
+          <th>Akcje</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of filteredOrders">
+          <td>{{ order.id }}</td>
+          <td>{{ getUserName(order.userId) }}</td>
+          <td>{{ getCompanyName(order.companyId) }}</td>
+          <td>
+            <span class="order-type" [class.buy]="order.orderType === 'BUY'" 
+                  [class.sell]="order.orderType === 'SELL'">
+              {{ order.orderType }}
+            </span>
+          </td>
+          <td>{{ order.quantity }}</td>
+          <td>{{ order.price | number:'1.2-2' }} PLN</td>
+          <td>{{ order.orderDate | date:'dd.MM.yyyy HH:mm' }}</td>
+          <td>
+            <span class="status" [class.pending]="order.status === 'PENDING'"
+                  [class.executed]="order.status === 'EXECUTED'"
+                  [class.cancelled]="order.status === 'CANCELLED'">
+              {{ order.status }}
+            </span>
+          </td>
+          <td>
+            <button class="cancel-btn" (click)="cancelOrder(order.id)" 
+                    [disabled]="order.status === 'CANCELLED' || order.status === 'EXECUTED'">
+              Anuluj
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="filteredOrders.length === 0" class="no-data">
+      Brak zamówień do wyświetlenia
+    </div>
+  </div>
+</div>

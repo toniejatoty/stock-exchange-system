@@ -62,4 +62,25 @@ public class OrdersController {
         Orders saved = ordersRepository.save(order);
         return ResponseEntity.ok(saved);
     }
+
+    @PutMapping("/{id}/cancel")
+    public ResponseEntity<?> cancelOrder(@PathVariable Long id) {
+        return ordersRepository.findById(id)
+            .map(order -> {
+                if (order.getStatus().equals("CANCELLED")) {
+                    return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                        .body("Zamówienie jest już anulowane");
+                }
+                if (order.getStatus().equals("EXECUTED")) {
+                    return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                        .body("Nie można anulować wykonanego zamówienia");
+                }
+                
+                order.setStatus("CANCELLED");
+                ordersRepository.save(order);
+                return ResponseEntity.ok(order);
+            })
+            .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body("Zamówienie o ID " + id + " nie istnieje"));
+    }
 }

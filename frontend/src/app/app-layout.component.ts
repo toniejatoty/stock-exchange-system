@@ -11,6 +11,7 @@ import { inject } from '@angular/core';
     <nav class="navbar">
       <a routerLink="/" class="nav-link">Home</a>
       <a routerLink="/portfolios" class="nav-link">Portfolios</a>
+      <a routerLink="/orders" class="nav-link">Zamówienia</a>
       <a routerLink="/companies-categories" class="nav-link">Spółki z kategoriami</a>
       <a routerLink="/users" class="nav-link">Użytkownicy</a>
     </nav>

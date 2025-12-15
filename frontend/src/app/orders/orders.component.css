@@ -1,0 +1,271 @@
+::ng-deep body.dark-mode .container {
+  background-color: #0f172a;
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  min-height: 100vh;
+}
+
+::ng-deep body.dark-mode h2,
+::ng-deep body.dark-mode h3 {
+  color: white;
+  margin-bottom: 20px;
+}
+
+/* Sekcja filtrów */
+.filter-section {
+  background-color: #1e293b;
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+::ng-deep body.dark-mode .filter-section {
+  background-color: #1e293b;
+}
+
+.filter-section label {
+  font-weight: bold;
+  color: white;
+}
+
+.filter-section select {
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid #334155;
+  background-color: #0f172a;
+  color: white;
+  cursor: pointer;
+  min-width: 200px;
+}
+
+::ng-deep body.dark-mode .filter-section select {
+  background-color: #0f172a;
+  color: white;
+  border-color: #334155;
+}
+
+.filter-info {
+  margin-left: auto;
+  color: #94a3b8;
+  font-size: 0.9em;
+}
+
+/* Formularz */
+.form-section {
+  background-color: #1e293b;
+  padding: 20px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+::ng-deep body.dark-mode .form-section {
+  background-color: #1e293b;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: white;
+}
+
+.form-group input,
+.form-group select {
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid #334155;
+  background-color: #0f172a;
+  color: white;
+}
+
+::ng-deep body.dark-mode .form-group input,
+::ng-deep body.dark-mode .form-group select {
+  background-color: #0f172a;
+  color: white;
+  border-color: #334155;
+}
+
+form button {
+  background-color: #1e3a8a;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+form button:hover {
+  background-color: #1e40af;
+}
+
+/* Tabela */
+.orders-list {
+  background-color: #1e293b;
+  padding: 20px;
+  border-radius: 6px;
+}
+
+::ng-deep body.dark-mode .orders-list {
+  background-color: #1e293b;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #0f172a;
+}
+
+::ng-deep body.dark-mode table {
+  background-color: #0f172a;
+}
+
+thead {
+  background-color: #1e3a8a;
+}
+
+::ng-deep body.dark-mode thead {
+  background-color: #1e3a8a;
+}
+
+th {
+  padding: 12px;
+  text-align: left;
+  color: white;
+  font-weight: bold;
+  border-bottom: 2px solid #334155;
+}
+
+td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #334155;
+  color: white;
+}
+
+::ng-deep body.dark-mode td {
+  color: white;
+  border-bottom-color: #334155;
+}
+
+tbody tr:hover {
+  background-color: #1e293b;
+}
+
+::ng-deep body.dark-mode tbody tr:hover {
+  background-color: #1e293b;
+}
+
+/* Style dla typów zamówień */
+.order-type {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.85em;
+}
+
+.order-type.buy {
+  background-color: #065f46;
+  color: #6ee7b7;
+}
+
+.order-type.sell {
+  background-color: #7f1d1d;
+  color: #fca5a5;
+}
+
+/* Style dla statusów */
+.status {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.85em;
+}
+
+.status.pending {
+  background-color: #854d0e;
+  color: #fde047;
+}
+
+.status.executed {
+  background-color: #065f46;
+  color: #6ee7b7;
+}
+
+.status.cancelled {
+  background-color: #7f1d1d;
+  color: #fca5a5;
+}
+
+/* Przyciski */
+.cancel-btn {
+  background-color: #854d0e;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+.cancel-btn:hover:not(:disabled) {
+  background-color: #a16207;
+}
+
+.cancel-btn:disabled {
+  background-color: #374151;
+  color: #6b7280;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Brak danych */
+.no-data {
+  text-align: center;
+  padding: 40px;
+  color: #94a3b8;
+  font-style: italic;
+}
+
+/* Tryb jasny */
+body:not(.dark-mode) .container {
+  background-color: white;
+  color: black;
+}
+
+body:not(.dark-mode) .filter-section,
+body:not(.dark-mode) .form-section,
+body:not(.dark-mode) .orders-list {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+body:not(.dark-mode) .filter-section select,
+body:not(.dark-mode) .form-group input,
+body:not(.dark-mode) .form-group select {
+  background-color: white;
+  color: black;
+  border-color: #cbd5e1;
+}
+
+body:not(.dark-mode) table {
+  background-color: white;
+}
+
+body:not(.dark-mode) td {
+  color: black;
+}
