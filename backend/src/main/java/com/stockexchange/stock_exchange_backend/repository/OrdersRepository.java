@@ -19,4 +19,7 @@ public interface OrdersRepository extends JpaRepository<Orders, Long> {
     
     @Query(value = "SELECT COUNT(*) FROM orders WHERE company_id = :companyId", nativeQuery = true)
     Integer countOrdersByCompanyId(@Param("companyId") Long companyId);
+    
+    @Query(value = "SELECT COUNT(*) FROM orders WHERE user_id = :userId AND status = 'PENDING'", nativeQuery = true)
+    Integer countPendingOrdersByUserId(@Param("userId") Long userId);
 }

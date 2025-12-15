@@ -1,6 +1,7 @@
 package com.stockexchange.stock_exchange_backend.controller;
 
 import com.stockexchange.stock_exchange_backend.repository.UserRepository;
+import com.stockexchange.stock_exchange_backend.repository.OrdersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,9 @@ public class UserController {
 
     @Autowired
     private UserRepository userRepository;
+    
+    @Autowired
+    private OrdersRepository ordersRepository;
 
     @GetMapping("/fullnames")
     public List<String> getAllFullNames() {
@@ -49,6 +53,14 @@ public class UserController {
     
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteUser(@PathVariable Long id) {
+        // Sprawdź czy użytkownik ma pending orders
+        Integer pendingOrders = ordersRepository.countPendingOrdersByUserId(id);
+        
+        if (pendingOrders != null && pendingOrders > 0) {
+            return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body("Nie można usunąć użytkownika - ma " + pendingOrders + " oczekujące zamówienie/a (PENDING)");
+        }
+        
         // Sprawdź czy użytkownik ma portfolios
         Integer count = userRepository.countPortfoliosByUserId(id);
         
