@@ -45,6 +45,24 @@
     </form>
   </div>
   
+  <div class="filter-section">
+    <h3>Filtruj spółki</h3>
+    <div class="form-group">
+      <label for="categoryFilter">Kategoria:</label>
+      <select 
+        id="categoryFilter" 
+        [(ngModel)]="selectedCategoryId" 
+        (ngModelChange)="filterCompanies()" 
+        name="categoryFilter"
+      >
+        <option value="0">-- Wszystkie kategorie --</option>
+        @for (cat of categories; track cat.id) {
+          <option [value]="cat.id">{{ cat.name }}</option>
+        }
+      </select>
+    </div>
+  </div>
+
   <table class="portfolio-table">
     <thead>
       <tr>
@@ -57,7 +75,7 @@
       </tr>
     </thead>
     <tbody>
-      @for (c of companiesWithCategory; track c.id) {
+      @for (c of filteredCompanies; track c.id) {
         <tr>
           <td>{{ c.id }}</td>
           <td>{{ c.name }}</td>

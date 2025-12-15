@@ -1,14 +1,66 @@
 <div class="container">
-  <h1>Stock Exchange System</h1>
-  <div class="welcome-section">
-    <h2>Witaj w systemie giełdowym!</h2>
-    <p>Wybierz jedną z opcji z menu powyżej:</p>
-    <ul>
-      <li><strong>Portfolios</strong> - zarządzaj portfoliami użytkowników</li>
-      <li><strong>Spółki z kategoriami</strong> - przeglądaj i zarządzaj spółkami</li>
-      <li><strong>Użytkownicy</strong> - zarządzaj użytkownikami systemu</li>
-    </ul>
+  <div class="hero-section">
+    <h1>📈 Stock Exchange System</h1>
+    <p class="subtitle">Kompleksowy system zarządzania giełdą i portfoliami inwestycyjnymi</p>
+  </div>
+
+  <div class="features-grid">
+    <a routerLink="/users" class="feature-card">
+      <div class="feature-icon">👤</div>
+      <h3>Użytkownicy</h3>
+      <p>Zarządzaj użytkownikami systemu, dodawaj nowe konta i monitoruj aktywność</p>
+    </a>
+
+    <a routerLink="/companies-categories" class="feature-card">
+      <div class="feature-icon">🏢</div>
+      <h3>Spółki i Kategorie</h3>
+      <p>Przeglądaj spółki giełdowe pogrupowane według kategorii branżowych</p>
+    </a>
+
+    <a routerLink="/portfolios" class="feature-card">
+      <div class="feature-icon">📊</div>
+      <h3>Portfolios</h3>
+      <p>Monitoruj portfolia użytkowników, ilość posiadanych akcji i wartość inwestycji</p>
+    </a>
+
+    <a routerLink="/orders" class="feature-card">
+      <div class="feature-icon">💼</div>
+      <h3>Zamówienia</h3>
+      <p>System zlecen kupna i sprzedaży z automatycznym matchowaniem transakcji</p>
+    </a>
+
+    <a routerLink="/categories" class="feature-card">
+      <div class="feature-icon">🏷️</div>
+      <h3>Kategorie</h3>
+      <p>Definiuj kategorie branżowe dla lepszej organizacji spółek</p>
+    </a>
+
+  </div>
+
+  <div class="stats-section">
+    <h2>Kluczowe funkcjonalności</h2>
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-icon">✅</span>
+        <span>Automatyczne matchowanie zleceń</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-icon">✅</span>
+        <span>Walidacja dostępności akcji</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-icon">✅</span>
+        <span>Zarządzanie portfoliami</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-icon">✅</span>
+        <span>System kategorii</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-icon">✅</span>
+        <span>Tryb ciemny/jasny</span>
+      </div>
+    </div>
   </div>
 </div>
-
 

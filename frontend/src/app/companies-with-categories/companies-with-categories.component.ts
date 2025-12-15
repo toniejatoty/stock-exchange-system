@@ -30,7 +30,9 @@ export class CompaniesWithCategoriesComponent implements OnInit {
   private cdr = inject(ChangeDetectorRef);
   
   companiesWithCategory: CompanyWithCategory[] = [];
+  filteredCompanies: CompanyWithCategory[] = [];
   categories: Category[] = [];
+  selectedCategoryId: number = 0;
   newCompany = {
     name: '',
     symbol: '',
@@ -42,14 +44,26 @@ export class CompaniesWithCategoriesComponent implements OnInit {
   ngOnInit() {
     this.loadCompanies();
     this.loadCategories();
-}
+  }
 
- loadCompanies() {
+  filterCompanies() {
+    if (Number(this.selectedCategoryId) === 0) {
+      this.filteredCompanies = this.companiesWithCategory;
+    } else {
+      this.filteredCompanies = this.companiesWithCategory.filter(
+        company => company.categoryName === this.categories.find(c => c.id === Number(this.selectedCategoryId))?.name
+      );
+    }
+    this.cdr.markForCheck();
+  }
+
+   loadCompanies() {
     this.http.get<CompanyWithCategory[]>('http://localhost:8080/api/companies/with-category')
       .subscribe({
         next: (data) => { 
-          this.companiesWithCategory = data; 
-          this.cdr.markForCheck(); 
+          this.companiesWithCategory = data;
+          this.filterCompanies();
+          this.cdr.markForCheck();
         },
         error: (err) => console.error('Error fetching companies with category', err)
       });

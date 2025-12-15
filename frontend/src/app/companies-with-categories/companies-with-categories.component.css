@@ -18,6 +18,29 @@
   background-color: #2d2d2d;
 }
 
+.filter-section {
+  background-color: #f0f9ff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  border-left: 4px solid #3b82f6;
+}
+
+::ng-deep body.dark-mode .filter-section {
+  background-color: #1e293b;
+  border-left-color: #93c5fd;
+}
+
+.filter-section h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #1e40af;
+}
+
+::ng-deep body.dark-mode .filter-section h3 {
+  color: #93c5fd;
+}
+
 ::ng-deep body.dark-mode h1 {
   color: white;
 }
