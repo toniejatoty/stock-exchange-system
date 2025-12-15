@@ -247,11 +247,20 @@ body:not(.dark-mode) .container {
   color: black;
 }
 
+body:not(.dark-mode) h2,
+body:not(.dark-mode) h3 {
+  color: black;
+}
+
 body:not(.dark-mode) .filter-section,
 body:not(.dark-mode) .form-section,
 body:not(.dark-mode) .orders-list {
   background-color: #f8fafc;
   border: 1px solid #e2e8f0;
+}
+
+body:not(.dark-mode) .filter-section label {
+  color: black;
 }
 
 body:not(.dark-mode) .filter-section select,
@@ -262,10 +271,36 @@ body:not(.dark-mode) .form-group select {
   border-color: #cbd5e1;
 }
 
+body:not(.dark-mode) .form-group label {
+  color: black;
+}
+
+body:not(.dark-mode) .filter-info {
+  color: #64748b;
+}
+
 body:not(.dark-mode) table {
   background-color: white;
 }
 
+body:not(.dark-mode) thead {
+  background-color: #3b82f6;
+}
+
+body:not(.dark-mode) th {
+  color: white;
+  border-bottom-color: #cbd5e1;
+}
+
 body:not(.dark-mode) td {
   color: black;
+  border-bottom-color: #e2e8f0;
+}
+
+body:not(.dark-mode) tbody tr:hover {
+  background-color: #f1f5f9;
+}
+
+body:not(.dark-mode) .no-data {
+  color: #64748b;
 }

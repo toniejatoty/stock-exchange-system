@@ -105,6 +105,28 @@ export class OrdersComponent implements OnInit {
       return;
     }
 
+    // Walidacja dla SELL - sprawdzamy czy użytkownik ma wystarczająco akcji
+    if (this.newOrder.orderType === 'SELL') {
+      this.http.get<number>(
+        `http://localhost:8080/api/portfolios/user/${this.newOrder.userId}/company/${this.newOrder.companyId}`
+      ).subscribe({
+        next: (availableShares) => {
+          if (availableShares < this.newOrder.quantity) {
+            alert(`Użytkownik ma tylko ${availableShares} akcji tej firmy. Nie może sprzedać ${this.newOrder.quantity} akcji.`);
+            return;
+          }
+          this.submitOrder();
+        },
+        error: (err) => {
+          alert('Błąd podczas sprawdzania portfela');
+        }
+      });
+    } else {
+      this.submitOrder();
+    }
+  }
+
+  private submitOrder(): void {
     this.http.post('http://localhost:8080/api/orders', this.newOrder)
       .subscribe({
         next: () => {

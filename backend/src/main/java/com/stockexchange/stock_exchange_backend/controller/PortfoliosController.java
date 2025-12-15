@@ -26,6 +26,15 @@ public class PortfoliosController {
         return portfoliosRepository.findByUserId(userId);
     }
     
+    // Pobierz ilość akcji użytkownika dla danej firmy
+    @GetMapping("/user/{userId}/company/{companyId}")
+    public Integer getUserCompanyShares(@PathVariable Long userId, @PathVariable Long companyId) {
+        return portfoliosRepository.findByUserId(userId).stream()
+            .filter(p -> p.getCompanyId().equals(companyId))
+            .mapToInt(Portfolios::getQuantity)
+            .sum();
+    }
+    
     // DODAJ nową pozycję do portfolio
     @PostMapping
     public Portfolios addPortfolio(@RequestBody Portfolios portfolio) {
