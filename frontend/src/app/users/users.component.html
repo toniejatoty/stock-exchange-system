@@ -1,0 +1,77 @@
+<div class="container">
+  <h1>Użytkownicy</h1>
+  
+  <!-- FORMULARZ DODAWANIA -->
+  <div class="add-form">
+    <h3>Dodaj nowego użytkownika</h3>
+    <form (ngSubmit)="addUser()">
+      <div class="form-group">
+        <label for="firstName">Imię:</label>
+        <input 
+          id="firstName" 
+          type="text" 
+          [(ngModel)]="newUser.firstName" 
+          name="firstName" 
+          required
+        >
+      </div>
+      
+      <div class="form-group">
+        <label for="lastName">Nazwisko:</label>
+        <input 
+          id="lastName" 
+          type="text" 
+          [(ngModel)]="newUser.lastName" 
+          name="lastName" 
+          required
+        >
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input 
+          id="email" 
+          type="email" 
+          [(ngModel)]="newUser.email" 
+          name="email" 
+          required
+        >
+      </div>
+      
+      <button type="submit" class="btn-add">Dodaj użytkownika</button>
+    </form>
+  </div>
+
+  <!-- TABELA UŻYTKOWNIKÓW -->
+  <table class="portfolio-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Imię</th>
+        <th>Nazwisko</th>
+        <th>Email</th>
+        <th>Akcje</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (user of users; track user.id) {
+        <tr>
+          <td>{{ user.id }}</td>
+          <td>{{ user.firstName }}</td>
+          <td>{{ user.lastName }}</td>
+          <td>{{ user.email }}</td>
+          <td>
+            <button class="btn-delete" (click)="deleteUser(user.id)">
+              Usuń
+            </button>
+          </td>
+        </tr>
+      }
+      @empty {
+        <tr>
+          <td colspan="5" style="text-align: center;">Brak użytkowników</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

@@ -169,21 +169,21 @@ body.light-mode form button:hover {
 
 /* ===== DARK MODE ===== */
 body.dark-mode {
-  background: #0b0b0d;
+  background: #0f172a;
   color: #e5e7eb;
 }
 
 body.dark-mode .container {
-  background: #111827;
+  background: #0f172a;
   border: 1px solid #1f2937;
 }
 
 body.dark-mode h1 {
-  color: #e5e7eb;
+  color: #ffffff;
 }
 
 body.dark-mode h2 {
-  color: #cbd5e1;
+  color: #ffffff;
 }
 
 body.dark-mode li {
@@ -192,28 +192,28 @@ body.dark-mode li {
 }
 
 body.dark-mode li:hover {
-  background: #273143;
+  background: #1e3a8a;
 }
 
 body.dark-mode .portfolio-table th {
-  background-color: #0f172a;
-  color: #f8fafc;
+  background-color: #1e3a8a !important;
+  color: #ffffff !important;
 }
 
 body.dark-mode .portfolio-table td {
-  color: #e5e7eb;
-  border-bottom: 1px solid #1f2937;
+  color: #ffffff;
+  border-bottom: 1px solid #444;
 }
 
 body.dark-mode .portfolio-table tr:hover {
-  background-color: #1f2937;
+  background-color: #1e3a8a !important;
 }
 
 body.dark-mode form select,
 body.dark-mode form input {
-  background: #0f172a;
-  color: #e5e7eb;
-  border: 1px solid #1f2937;
+  background: #1a1a1a;
+  color: #ffffff;
+  border: 1px solid #444;
 }
 
 body.dark-mode .toggle-btn {

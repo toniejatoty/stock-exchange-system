@@ -27,10 +27,6 @@
   margin-bottom: 1rem;
 }
 
-::ng-deep body.dark-mode .add-form h3 {
-  color: white;
-}
-
 .add-form form {
   display: flex;
   flex-wrap: wrap;
@@ -53,19 +49,21 @@
   color: white;
 }
 
-.form-group input,
-.form-group select {
+.form-group input {
   padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 1rem;
 }
 
-::ng-deep body.dark-mode .form-group input,
-::ng-deep body.dark-mode .form-group select {
+::ng-deep body.dark-mode .form-group input {
   background-color: #1a1a1a;
   color: white;
   border-color: #444;
+}
+
+::ng-deep body.dark-mode .add-form h3 {
+  color: white;
 }
 
 .btn-add {
@@ -134,19 +132,4 @@
 
 ::ng-deep body.dark-mode .portfolio-table td {
   color: white;
-}
-
-::ng-deep body.dark-mode .portfolio-table tbody tr:hover td {
-  background-color: inherit !important;
-  color: white !important;
-}
-
-/* DODATKOWO: jeśli nadal nie działa, spróbuj ten bardziej specyficzny selektor */
-::ng-deep .dark-mode table.portfolio-table tbody tr:hover {
-  background-color: #1e3a8a !important;
-}
-:host ::ng-deep body.dark-mode .portfolio-table th {
-  background-color: #374151 !important;
-  color: #e5e7eb !important;
-  border-bottom-color: #4b5563 !important;
 }

@@ -55,15 +55,7 @@ export class App implements OnInit {
     
     
     // Pobierz użytkowników
-    this.http.get<User[]>('http://localhost:8080/api/users')
-      .subscribe({
-        next: (data) => {
-          console.log('Users loaded:', data);
-          this.users = data;
-          this.cdr.markForCheck();
-        },
-        error: (error) => console.error('Error fetching users:', error)
-      });
+
     
     // Pobierz portfolios
     this.http.get<Portfolio[]>('http://localhost:8080/api/portfolios')
