@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './orders.component.html',
-  styleUrls: ['./orders.component.css']
+  styleUrl: './orders.component.css'
 })
 export class OrdersComponent implements OnInit {
   orders: any[] = [];
