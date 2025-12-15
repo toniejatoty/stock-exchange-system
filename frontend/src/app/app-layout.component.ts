@@ -14,6 +14,7 @@ import { inject } from '@angular/core';
       <a routerLink="/orders" class="nav-link">Zamówienia</a>
       <a routerLink="/companies-categories" class="nav-link">Spółki z kategoriami</a>
       <a routerLink="/users" class="nav-link">Użytkownicy</a>
+      <a routerLink="/categories" class="nav-link">Kategorie</a>
     </nav>
     <div class="theme-toggle">
       <button (click)="toggleDarkMode()" class="toggle-btn">

@@ -1,6 +1,18 @@
 <div class="container">
   <h1>Portfolios</h1>
   
+  <!-- FILTR UŻYTKOWNIKA -->
+  <div class="filter-section">
+    <label for="userFilter">Filtruj według użytkownika:</label>
+    <select id="userFilter" [(ngModel)]="selectedUserId" (change)="onUserFilterChange()">
+      <option [value]="0">Wszyscy użytkownicy</option>
+      @for (user of users; track user.id) {
+        <option [value]="user.id">{{ user.firstName }} {{ user.lastName }}</option>
+      }
+    </select>
+    <span class="filter-info">Znaleziono: {{ filteredPortfolios.length }} pozycji</span>
+  </div>
+  
   <!-- FORMULARZ DODAWANIA -->
   <div class="add-form">
     <h3>Dodaj nową pozycję do portfolio</h3>
@@ -64,7 +76,7 @@
       </tr>
     </thead>
     <tbody>
-      @for (portfolio of portfolios; track portfolio.id) {
+      @for (portfolio of filteredPortfolios; track portfolio.id) {
         <tr>
           <td>{{ portfolio.id }}</td>
           <td>{{ getUserName(portfolio.userId) }}</td>

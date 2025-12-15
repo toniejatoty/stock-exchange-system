@@ -4,11 +4,13 @@ import { CompaniesWithCategoriesComponent } from './companies-with-categories/co
 import { UsersComponent } from './users/users.component';
 import { PortfoliosComponent } from './portfolios/portfolios.component';
 import { OrdersComponent } from './orders/orders.component';
+import { CategoriesComponent } from './categories/categories.component';
 
 export const routes: Routes = [
   { path: '', component: App },
   { path: 'portfolios', component: PortfoliosComponent },
   { path: 'orders', component: OrdersComponent },
   { path: 'companies-categories', component: CompaniesWithCategoriesComponent },
-  { path: 'users', component: UsersComponent }
+  { path: 'users', component: UsersComponent },
+  { path: 'categories', component: CategoriesComponent }
 ];

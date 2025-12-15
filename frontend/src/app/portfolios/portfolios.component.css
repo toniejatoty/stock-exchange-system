@@ -7,6 +7,51 @@
   background-color: #0f172a !important;
 }
 
+.filter-section {
+  background-color: #f5f5f5;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+::ng-deep body.dark-mode .filter-section {
+  background-color: #2d2d2d;
+}
+
+.filter-section label {
+  font-weight: 500;
+  margin: 0;
+}
+
+::ng-deep body.dark-mode .filter-section label {
+  color: white;
+}
+
+.filter-section select {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  min-width: 200px;
+}
+
+::ng-deep body.dark-mode .filter-section select {
+  background-color: #1a1a1a;
+  color: white;
+  border-color: #444;
+}
+
+.filter-info {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+::ng-deep body.dark-mode .filter-info {
+  color: #aaa;
+}
+
 .add-form {
   background-color: #f5f5f5;
   padding: 1.5rem;

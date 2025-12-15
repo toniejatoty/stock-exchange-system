@@ -41,6 +41,8 @@ export class PortfoliosComponent implements OnInit {
   companies: Company[] = [];
   users: User[] = [];
   portfolios: Portfolio[] = [];
+  filteredPortfolios: Portfolio[] = [];
+  selectedUserId: number = 0;
   
   newPortfolio = {
     userId: 0,
@@ -59,6 +61,7 @@ export class PortfoliosComponent implements OnInit {
       .subscribe({
         next: (data) => {
           this.portfolios = data;
+          this.filterPortfolios();
           this.cdr.markForCheck();
         },
         error: (error) => console.error('Error fetching portfolios:', error)
@@ -123,6 +126,22 @@ export class PortfoliosComponent implements OnInit {
           alert('Błąd usuwania portfolio!');
         }
       });
+  }
+
+  filterPortfolios(): void {
+    if (this.selectedUserId === 0 || this.selectedUserId === '0' as any) {
+      this.filteredPortfolios = [...this.portfolios];
+    } else {
+      const userId = Number(this.selectedUserId);
+      this.filteredPortfolios = this.portfolios.filter(
+        p => p.userId === userId
+      );
+    }
+  }
+
+  onUserFilterChange(): void {
+    this.filterPortfolios();
+    this.cdr.markForCheck();
   }
 
   getUserName(userId: number): string {
