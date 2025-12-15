@@ -56,8 +56,8 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>User ID</th>
-        <th>Company ID</th>
+        <th>Użytkownik</th>
+        <th>Spółka</th>
         <th>Liczba akcji</th>
         <th>Ostatnia aktualizacja</th>
         <th>Akcje</th>
@@ -67,8 +67,8 @@
       @for (portfolio of portfolios; track portfolio.id) {
         <tr>
           <td>{{ portfolio.id }}</td>
-          <td>{{ portfolio.userId }}</td>
-          <td>{{ portfolio.companyId }}</td>
+          <td>{{ getUserName(portfolio.userId) }}</td>
+          <td>{{ getCompanyName(portfolio.companyId) }}</td>
           <td>{{ portfolio.quantity }}</td>
           <td>{{ portfolio.lastUpdated | date:'short' }}</td>
           <td>

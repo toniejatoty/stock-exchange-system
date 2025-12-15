@@ -124,4 +124,14 @@ export class PortfoliosComponent implements OnInit {
         }
       });
   }
+
+  getUserName(userId: number): string {
+    const user = this.users.find(u => u.id === userId);
+    return user ? `${user.firstName} ${user.lastName}` : `ID: ${userId}`;
+  }
+
+  getCompanyName(companyId: number): string {
+    const company = this.companies.find(c => c.id === companyId);
+    return company ? company.name : `ID: ${companyId}`;
+  }
 }

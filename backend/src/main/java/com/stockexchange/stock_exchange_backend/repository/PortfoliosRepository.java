@@ -21,4 +21,13 @@ public interface PortfoliosRepository extends JpaRepository<Portfolios, Long> {
     // Możesz też napisać ręcznie:
     @Query("SELECT p FROM Portfolios p")
     List<Portfolios> getAllPortfolios();
+    
+    // Znajdź wszystkie portfolios z nazwami użytkowników i spółek
+    @Query(value = "SELECT p.id, p.user_id, p.company_id, p.quantity, p.last_updated, " +
+           "u.first_name, u.last_name, c.name as company_name, c.symbol " +
+           "FROM portfolios p " +
+           "JOIN users u ON p.user_id = u.id " +
+           "JOIN companies c ON p.company_id = c.id", 
+           nativeQuery = true)
+    List<Object[]> findAllPortfoliosWithNames();
 }
