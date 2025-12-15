@@ -45,15 +45,15 @@ public ResponseEntity<?> createCompany(@RequestBody Companies company) {
     return ResponseEntity.ok(saved);
 }
     
-    // Usuń spółkę
+    // Delete company
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteCompany(@PathVariable Long id) {
-    // Sprawdź czy spółka jest w portfolios
+    // Check if company is in portfolios
     Integer count = companiesRepository.countPortfoliosByCompanyId(id);
     
     if (count != null && count > 0) {
         return ResponseEntity.status(HttpStatus.CONFLICT)
-            .body("Nie można usunąć spółki - jest używana w " + count + " portfolio(s)");
+            .body("Cannot delete company - it is used in " + count + " portfolio(s)");
     }
     
     companiesRepository.deleteById(id);

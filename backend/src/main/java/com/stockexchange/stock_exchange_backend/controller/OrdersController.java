@@ -59,7 +59,7 @@ public class OrdersController {
                 .body("Price musi być większe od 0");
         }
         
-        // Walidacja dla SELL - sprawdź czy ma wystarczającą ilość akcji
+        // Validation for SELL - check if user has enough shares
         if (order.getOrderType().equals("SELL")) {
             Portfolios portfolio = portfoliosRepository.findByUserIdAndCompanyId(
                 order.getUserId(), order.getCompanyId()
@@ -73,9 +73,9 @@ public class OrdersController {
             
             if (availableShares < order.getQuantity()) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body("Niewystarczająca ilość akcji. Masz: " + portfolioShares + 
-                          ", oczekujące SELL: " + pendingSellShares + 
-                          ", dostępne: " + availableShares);
+                    .body("Insufficient shares. You have: " + portfolioShares + 
+                          ", pending SELL: " + pendingSellShares + 
+                          ", available: " + availableShares);
             }
         }
 
@@ -238,11 +238,11 @@ public class OrdersController {
             .map(order -> {
                 if (order.getStatus().equals("CANCELLED")) {
                     return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                        .body("Zamówienie jest już anulowane");
+                        .body("Order is already cancelled");
                 }
                 if (order.getStatus().equals("EXECUTED")) {
                     return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                        .body("Nie można anulować wykonanego zamówienia");
+                        .body("Cannot cancel executed order");
                 }
                 
                 order.setStatus("CANCELLED");

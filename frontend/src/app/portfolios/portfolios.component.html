@@ -1,31 +1,31 @@
 <div class="container">
   <h1>Portfolios</h1>
   
-  <!-- FILTR UŻYTKOWNIKA -->
+  <!-- USER FILTER -->
   <div class="filter-section">
-    <label for="userFilter">Filtruj według użytkownika:</label>
+    <label for="userFilter">Filter by User:</label>
     <select id="userFilter" [(ngModel)]="selectedUserId" (change)="onUserFilterChange()">
-      <option [value]="0">Wszyscy użytkownicy</option>
+      <option [value]="0">All Users</option>
       @for (user of users; track user.id) {
         <option [value]="user.id">{{ user.firstName }} {{ user.lastName }}</option>
       }
     </select>
-    <span class="filter-info">Znaleziono: {{ filteredPortfolios.length }} pozycji</span>
+    <span class="filter-info">Found: {{ filteredPortfolios.length }} items</span>
   </div>
   
-  <!-- FORMULARZ DODAWANIA -->
+  <!-- ADD FORM -->
   <div class="add-form">
-    <h3>Dodaj nową pozycję do portfolio</h3>
+    <h3>Add New Portfolio Position</h3>
     <form (ngSubmit)="addPortfolio()">
       <div class="form-group">
-        <label for="user">Użytkownik:</label>
+        <label for="user">User:</label>
         <select 
           id="user" 
           [(ngModel)]="newPortfolio.userId" 
           name="userId" 
           required
         >
-          <option value="0">-- Wybierz użytkownika --</option>
+          <option value="0">-- Select User --</option>
           @for (user of users; track user.id) {
             <option [value]="user.id">{{ user.firstName }} {{ user.lastName }}</option>
           }
@@ -33,14 +33,14 @@
       </div>
       
       <div class="form-group">
-        <label for="company">Spółka:</label>
+        <label for="company">Company:</label>
         <select 
           id="company" 
           [(ngModel)]="newPortfolio.companyId" 
           name="companyId" 
           required
         >
-          <option value="0">-- Wybierz spółkę --</option>
+          <option value="0">-- Select Company --</option>
           @for (company of companies; track company.id) {
             <option [value]="company.id">{{ company.name }} ({{ company.symbol }})</option>
           }
@@ -48,7 +48,7 @@
       </div>
       
       <div class="form-group">
-        <label for="quantity">Liczba akcji:</label>
+        <label for="quantity">Share Quantity:</label>
         <input 
           id="quantity" 
           type="number" 
@@ -59,20 +59,20 @@
         >
       </div>
       
-      <button type="submit" class="btn-add">Dodaj portfolio</button>
+      <button type="submit" class="btn-add">Add Portfolio</button>
     </form>
   </div>
 
-  <!-- TABELA PORTFOLIOS -->
+  <!-- PORTFOLIOS TABLE -->
   <table class="portfolio-table">
     <thead>
       <tr>
         <th>ID</th>
-        <th>Użytkownik</th>
-        <th>Spółka</th>
-        <th>Liczba akcji</th>
-        <th>Ostatnia aktualizacja</th>
-        <th>Akcje</th>
+        <th>User</th>
+        <th>Company</th>
+        <th>Share Quantity</th>
+        <th>Last Updated</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -85,14 +85,14 @@
           <td>{{ portfolio.lastUpdated | date:'short' }}</td>
           <td>
             <button class="btn-delete" (click)="deletePortfolio(portfolio.id)">
-              Usuń
+              Delete
             </button>
           </td>
         </tr>
       }
       @empty {
         <tr>
-          <td colspan="6" style="text-align: center;">Brak portfolios</td>
+          <td colspan="6" style="text-align: center;">No portfolios</td>
         </tr>
       }
     </tbody>

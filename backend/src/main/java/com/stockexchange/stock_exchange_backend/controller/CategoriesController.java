@@ -29,19 +29,19 @@ public class CategoriesController {
         // Walidacja nazwy
         if (category.getName() == null || category.getName().trim().isEmpty()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .body("Nazwa kategorii nie może być pusta");
+                .body("Category name cannot be empty");
         }
         
-        // Sprawdź uniklaność nazwy
+        // Check name uniqueness
         Long existingCount = categoriesRepository.countByName(category.getName());
         if (existingCount > 0) {
             return ResponseEntity.status(HttpStatus.CONFLICT)
-                .body("Kategoria o nazwie '" + category.getName() + "' już istnieje");
+                .body("Category with name '" + category.getName() + "' already exists");
         }
         
         if (category.getDescription() == null || category.getDescription().trim().isEmpty()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .body("Opis kategorii nie może być pusty");
+                .body("Category description cannot be empty");
         }
         
         Categories saved = categoriesRepository.save(category);
@@ -54,18 +54,18 @@ public class CategoriesController {
         // Sprawdź czy kategoria istnieje
         if (!categoriesRepository.existsById(id)) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .body("Kategoria o ID " + id + " nie istnieje");
+                .body("Category with ID " + id + " not found");
         }
         
-        // Sprawdź czy są powiązane spółki
+        // Check if there are linked companies
         Integer companiesCount = categoriesRepository.countCompaniesByCategoryId(id);
         if (companiesCount > 0) {
             return ResponseEntity.status(HttpStatus.CONFLICT)
-                .body("Nie można usunąć kategorii - jest powiązana z " + companiesCount + " spółką/ami");
+                .body("Cannot delete category - it is linked to " + companiesCount + " company(ies)");
         }
         
         categoriesRepository.deleteById(id);
-        return ResponseEntity.ok("Kategoria usunięta pomyślnie");
+        return ResponseEntity.ok("Category deleted successfully");
     }
 
 }

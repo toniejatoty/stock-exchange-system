@@ -1,11 +1,11 @@
 <div class="container">
-  <h1>Spółki z kategoriami</h1>
+  <h1>Companies with Categories</h1>
   
   <div class="add-form">
-    <h3>Dodaj nową spółkę</h3>
+    <h3>Add New Company</h3>
     <form (ngSubmit)="addCompany()">
       <div class="form-group">
-        <label for="name">Nazwa spółki:</label>
+        <label for="name">Company Name:</label>
         <input 
           id="name" 
           type="text" 
@@ -27,35 +27,35 @@
       </div>
       
       <div class="form-group">
-        <label for="category">Kategoria:</label>
+        <label for="category">Category:</label>
         <select 
           id="category" 
           [(ngModel)]="newCompany.categoryId" 
           name="category" 
           required
         >
-          <option value="0">-- Wybierz kategorię --</option>
+          <option value="0">-- Select Category --</option>
           @for (cat of categories; track cat.id) {
             <option [value]="cat.id">{{ cat.name }}</option>
           }
         </select>
       </div>
       
-      <button type="submit" class="btn-add">Dodaj spółkę</button>
+      <button type="submit" class="btn-add">Add Company</button>
     </form>
   </div>
   
   <div class="filter-section">
-    <h3>Filtruj spółki</h3>
+    <h3>Filter Companies</h3>
     <div class="form-group">
-      <label for="categoryFilter">Kategoria:</label>
+      <label for="categoryFilter">Category:</label>
       <select 
         id="categoryFilter" 
         [(ngModel)]="selectedCategoryId" 
         (ngModelChange)="filterCompanies()" 
         name="categoryFilter"
       >
-        <option value="0">-- Wszystkie kategorie --</option>
+        <option value="0">-- All Categories --</option>
         @for (cat of categories; track cat.id) {
           <option [value]="cat.id">{{ cat.name }}</option>
         }
@@ -67,11 +67,11 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>Nazwa</th>
+        <th>Name</th>
         <th>Ticker</th>
-        <th>Kategoria</th>
-        <th>Opis kategorii</th>
-        <th>Akcje</th>
+        <th>Category</th>
+        <th>Category Description</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -84,7 +84,7 @@
           <td>{{ c.description }}</td>
           <td>
             <button class="btn-delete" (click)="deleteCompany(c.id)">
-              Usuń
+              Delete
             </button>
           </td>
         </tr>

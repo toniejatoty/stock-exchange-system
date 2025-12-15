@@ -53,20 +53,20 @@ public class UserController {
     
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteUser(@PathVariable Long id) {
-        // Sprawdź czy użytkownik ma pending orders
+        // Check if user has pending orders
         Integer pendingOrders = ordersRepository.countPendingOrdersByUserId(id);
         
         if (pendingOrders != null && pendingOrders > 0) {
             return ResponseEntity.status(HttpStatus.CONFLICT)
-                .body("Nie można usunąć użytkownika - ma " + pendingOrders + " oczekujące zamówienie/a (PENDING)");
+                .body("Cannot delete user - has " + pendingOrders + " pending order(s)");
         }
         
-        // Sprawdź czy użytkownik ma portfolios
+        // Check if user has portfolios
         Integer count = userRepository.countPortfoliosByUserId(id);
         
         if (count != null && count > 0) {
             return ResponseEntity.status(HttpStatus.CONFLICT)
-                .body("Nie można usunąć użytkownika - ma " + count + " portfolio(s)");
+                .body("Cannot delete user - has " + count + " portfolio(s)");
         }
         
         userRepository.deleteById(id);
